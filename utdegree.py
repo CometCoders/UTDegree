@@ -41,7 +41,7 @@ Definitions:
 course_num_pattern = re.compile('[A-Z]{2,4} [0-9]{4}')                     # Every course number has a prefix and a number.
 
 class Course:
-    """Encapsulates the blueprint of a course."""
+    """Blueprint of a course."""
     def __init__(self, tag):
         """
         Initialize self using the tag that contains the data.
@@ -77,7 +77,7 @@ class Course:
         self.build_and_add_mandates(self.prereqs, raw)   
             
     def get_wcoreqs(self, tag):
-        """Get the course's wcoreqs from the tag's title attribute."""
+        """Get the course's weak coreqs from the tag's title attribute."""
         raw = re.findall('Prerequisite[s]? or Corequisite[s]?:(.*)\. Corequisite[s]?:', tag['title'])
         if len(raw) < 1: # The course has no strong coreqs.
             raw = re.findall('Prerequisite[s]? or Corequisite[s]?:(.*)\(Same as.*\)', tag['title'])
@@ -89,7 +89,7 @@ class Course:
         
             
     def get_scoreqs(self, tag):
-        """Get the course's wcoreqs from the tag's title attribute."""
+        """Get the course's strong coreqs from the tag's title attribute."""
         raw = re.findall('\. Corequisite[s]?:(.*)\(Same as.*\)', tag['title'])
         if len(raw) < 1: # The course is not the same as another course.
             raw = re.findall('\. Corequisite[s]?:(.*)\([0-9]-[0-9]\)', tag['title'])
@@ -98,7 +98,7 @@ class Course:
         self.build_and_add_mandates(self.scoreqs, raw)
 
     def build_and_add_mandates(self, lst, raw):
-        """Process mandates from a raw string and add them to lst."""
+        """Process mandates from a raw string and add them to self.lst."""
         mandates = raw[0].split(' and ')
         for mandate in mandates:
             new_mandate = []
