@@ -4,7 +4,7 @@ Get more or less complete degree plans from the UTD Course Catalog in JSON.
 
 ## Dependencies
 
-* python 2.7.10
+* Python 2.7.10
 * [Beautiful Soup 4](https://www.crummy.com/software/BeautifulSoup/)
 
 ## Usage
