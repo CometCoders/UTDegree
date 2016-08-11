@@ -29,7 +29,7 @@ Definitions:
 
 6. Completing a mandate - Taking at least one course in the mandated list.
 
-7. A Requirement is a list of mandates, all of which must be completed.
+7. Requirement - A list of mandates, all of which must be completed.
 
 8. A Course - A list containing
     a. number of a course.
